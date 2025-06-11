@@ -1,0 +1,23 @@
+.team {
+    text-align: center;
+    padding: 32px;
+
+    h3 {
+        font-size: 32px;    
+        margin-bottom: 16px;
+    }
+
+    hr {
+        border-top: 4px solid;
+        max-width: 56px;       
+        margin-bottom: 24px;
+    }
+
+    .employees {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-top: 32px;
+        gap: 16px;
+    }
+}
