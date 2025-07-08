@@ -42,25 +42,32 @@ function App() {
       secondaryColor: '#FFEEDF'
     }
   ]
-  
+
   const [employees, setEmployees] = useState([])
 
   const addNewEmployee = (employee) => {
     setEmployees([...employees, employee])
   }
 
+  function deleteEmployee() {
+    console.log('Deletando colaborador!');
+  }
+
   return (
     <div className="App">
       <Banner />
-      <Form teams={teams.map(team => team.name)} onRegister={employee => addNewEmployee(employee)}/>
+      <Form teams={teams.map(team => team.name)} onRegister={employee => addNewEmployee(employee)} />
 
-      {teams.map(team => <Team
-        key={team.name}
-        name={team.name}
-        primaryColor={team.primaryColor}
-        secondaryColor={team.secondaryColor}
-        employees={employees.filter(employee => employee.team === team.name)}
-      />)}
+      {teams.map(team => 
+        <Team
+          key={team.name}
+          name={team.name}
+          primaryColor={team.primaryColor}
+          secondaryColor={team.secondaryColor}
+          employees={employees.filter(employee => employee.team === team.name)}
+          onDelete={deleteEmployee}
+        />
+      )}
 
       <Footer />
     </div>

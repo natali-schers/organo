@@ -1,5 +1,12 @@
 .employee {
     width: 280px;
+    position: relative;
+
+    .delete {
+        position: absolute;
+        top: -12px;
+        right: -12px;
+    }
 
     .header {
         background-color: #F0F0F0;
