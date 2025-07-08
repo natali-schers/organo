@@ -1,6 +1,8 @@
 .team {
     text-align: center;
     padding: 32px;
+    background-blend-mode: multiply;
+    position: relative;
 
     h3 {
         font-size: 32px;    
@@ -11,6 +13,12 @@
         border-top: 4px solid;
         max-width: 56px;       
         margin-bottom: 24px;
+    }
+
+    .input-color {
+        position: absolute;
+        top: 20px;
+        right: 50px;
     }
 
     .employees {

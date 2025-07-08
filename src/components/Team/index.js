@@ -1,10 +1,12 @@
 import "./style.css";
 import Employee from "../Employee";
+import hexToRgba from "hex-to-rgba";
 
 const Team = (props) => {
     return (
         (props.employees.length > 0) &&
-        <section className="team" style={{backgroundColor: props.secondaryColor}}>
+        <section className="team" style={{backgroundColor: hexToRgba(props.primaryColor, 0.6)}}>
+            <input onChange={e => props.onChangeTeamColor(e.target.value, props.name)} value={props.primaryColor} type="color" className="input-color" />
             <h3>{props.name}</h3>
             <hr style={{borderColor: props.primaryColor}}/>
             <div className="employees">

@@ -5,43 +5,36 @@ import Team from './components/Team';
 import Footer from './components/Footer';
 
 function App() {
-  const teams = [
+  const [teams, setTeams] = useState([
     {
       name: 'Programação',
-      primaryColor: '#57C278',
-      secondaryColor: '#D9F7E9'
+      color: '#57C278'
     },
     {
       name: 'Front-End',
-      primaryColor: '#82CFFA',
-      secondaryColor: '#E8F8FF'
+      color: '#82CFFA'
     },
     {
       name: 'Data Science',
-      primaryColor: '#A6D157',
-      secondaryColor: '#F0F8E2'
+      color: '#A6D157'
     },
     {
       name: 'Devops',
-      primaryColor: '#E06B69',
-      secondaryColor: '#FDE7E8'
+      color: '#E06B69'
     },
     {
       name: 'UX e Design',
-      primaryColor: '#DB6EBF',
-      secondaryColor: '#FAE9F5'
+      color: '#DB6EBF'
     },
     {
       name: 'Mobile',
-      primaryColor: '#FFBA05',
-      secondaryColor: '#FFF5D9'
+      color: '#FFBA05'
     },
     {
       name: 'Inovação e Gestão',
-      primaryColor: '#FF8A29',
-      secondaryColor: '#FFEEDF'
+      color: '#FF8A29'
     }
-  ]
+  ])
 
   const [employees, setEmployees] = useState([])
 
@@ -53,6 +46,15 @@ function App() {
     console.log('Deletando colaborador!');
   }
 
+  function changeTeamColor(newColor, teamName) {
+    setTeams(teams.map(team => {
+      if (team.name === teamName) {
+        team.color = newColor;
+      }
+      return team;
+    }));
+  }
+
   return (
     <div className="App">
       <Banner />
@@ -62,10 +64,10 @@ function App() {
         <Team
           key={team.name}
           name={team.name}
-          primaryColor={team.primaryColor}
-          secondaryColor={team.secondaryColor}
+          primaryColor={team.color}
           employees={employees.filter(employee => employee.team === team.name)}
           onDelete={deleteEmployee}
+          onChangeTeamColor={changeTeamColor}
         />
       )}
 
