@@ -3,8 +3,14 @@ import './style.css';
 
 const Employee = (props) => {
     return (
-        <div className='employee'>
-            <AiFillCloseCircle size={25} onClick={props.onDelete} className='delete'/>
+        <div className='employee' id={props.id}>
+            <AiFillCloseCircle 
+                size={32} 
+                onClick={() => props.onDelete(props.id)} 
+                className='delete'
+                title='Deletar colaborador'
+            />
+
             <div className='header' style={{backgroundColor: props.backgroundColor}}>
                 <img src={props.image} alt={props.name}></img>
             </div>
