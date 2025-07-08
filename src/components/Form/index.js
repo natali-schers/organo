@@ -29,10 +29,10 @@ const Form = (props) => {
         <section className='form'>
             <form onSubmit={onSave}>
                 <h2>Preencha os dados para criar o card do colaborador</h2>
-                <InputText label="Nome" required="true" placeholder="Digite seu nome" value={name} onSave={value => setName(value)}/>
-                <InputText label="Cargo" required="true" placeholder="Digite seu cargo" value={role} onSave={value => setRole(value)}/>
-                <InputText label="Imagem" required="true" placeholder="Informe o endereço da imagem" value={image} onSave={value => setImage(value)}/>
-                <Dropdown label="Time" required="true" items={props.teams} value={team} onSave={value => setTeam(value)}/>
+                <InputText label="Nome" required={true} placeholder="Digite seu nome" value={name} onSave={value => setName(value)}/>
+                <InputText label="Cargo" required={true} placeholder="Digite seu cargo" value={role} onSave={value => setRole(value)}/>
+                <InputText label="Imagem" required={true} placeholder="Informe o endereço da imagem" value={image} onSave={value => setImage(value)}/>
+                <Dropdown label="Time" required={true} items={props.teams} value={team} onSave={value => setTeam(value)}/>
 
                 <Button>Criar Card</Button>
             </form>
