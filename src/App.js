@@ -64,10 +64,23 @@ function App() {
     }));
   }
 
+  function teamRegister(newTeam) {
+    const teamExists = teams.some(team => team.name === newTeam.name);
+    if (!teamExists) {
+      setTeams([...teams, { ...newTeam, id: uuidv4() }]);
+    } else {
+      alert('Time já cadastrado!');
+    }
+  }
+
   return (
     <div className="App">
       <Banner />
-      <Form teams={teams.map(team => team.name)} onRegister={employee => addNewEmployee(employee)} />
+      <Form 
+        teams={teams.map(team => team.name)} 
+        onRegister={employee => addNewEmployee(employee)} 
+        onTeamRegister={teamRegister}
+      />
 
       {teams.map(team => 
         <Team

@@ -9,6 +9,8 @@ const Form = (props) => {
     const [role, setRole] = useState('')
     const [image, setImage] = useState('')
     const [team, setTeam] = useState('')
+    const [teamName, setTeamName] = useState('')
+    const [teamColor, setTeamColor] = useState('')
 
     const onSave = (evento) => {
         evento.preventDefault();
@@ -25,16 +27,35 @@ const Form = (props) => {
         setTeam('')
     }
 
+    const onTeamRegister = (evento) => {
+        evento.preventDefault();
+
+        props.onTeamRegister({
+            name: teamName,
+            color: teamColor
+        })
+        setTeamName('')
+        setTeamColor('')
+    }
+
     return (
         <section className='form'>
             <form onSubmit={onSave}>
-                <h2>Preencha os dados para criar o card do colaborador</h2>
-                <InputText label="Nome" required={true} placeholder="Digite seu nome" value={name} onSave={value => setName(value)}/>
-                <InputText label="Cargo" required={true} placeholder="Digite seu cargo" value={role} onSave={value => setRole(value)}/>
-                <InputText label="Imagem" required={true} placeholder="Informe o endereço da imagem" value={image} onSave={value => setImage(value)}/>
-                <Dropdown label="Time" required={true} items={props.teams} value={team} onSave={value => setTeam(value)}/>
+                <h2>Preencha os dados para criar o card do colaborador:</h2>
+                <InputText label="Nome" required={true} placeholder="Digite seu nome" value={name} onInputChange={value => setName(value)}/>
+                <InputText label="Cargo" required={true} placeholder="Digite seu cargo" value={role} onInputChange={value => setRole(value)}/>
+                <InputText label="Imagem" required={true} placeholder="Informe o endereço da imagem" value={image} onInputChange={value => setImage(value)}/>
+                <Dropdown label="Time" required={true} items={props.teams} value={team} onInputChange={value => setTeam(value)}/>
 
                 <Button>Criar Card</Button>
+            </form>
+
+            <form onSubmit={onTeamRegister}>
+                <h2>Preencha os dados para criar a seção de time:</h2>
+                <InputText label="Nome" required={true} placeholder="Digite o nome do time" value={teamName} onInputChange={value => setTeamName(value)}/>
+                <InputText label="Cor" required={true} placeholder="Digite a cor do time em hexadecimal (#XXXXXX)" value={teamColor} onInputChange={value => setTeamColor(value)}/>
+
+                <Button>Criar Time</Button>
             </form>
         </section>
     )
