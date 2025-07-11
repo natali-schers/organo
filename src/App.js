@@ -47,7 +47,7 @@ function App() {
   const [employees, setEmployees] = useState([])
 
   const addNewEmployee = (employee) => {
-    const newEmployee = { ...employee, id: uuidv4() };
+    const newEmployee = { ...employee, id: uuidv4(), favorite: false };
     setEmployees([...employees, newEmployee]);
   };
 
@@ -73,6 +73,15 @@ function App() {
     }
   }
 
+  function favoriteEmployee(id) {
+    setEmployees(employees.map(employee => {
+      if (employee.id === id) {
+        employee.favorite = !employee.favorite;
+      }
+      return employee;
+    }));
+  }
+
   return (
     <div className="App">
       <Banner />
@@ -91,6 +100,7 @@ function App() {
           employees={employees.filter(employee => employee.team === team.name)}
           onDelete={deleteEmployee}
           onChangeTeamColor={changeTeamColor}
+          onFavorite={favoriteEmployee}
         />
       )}
 

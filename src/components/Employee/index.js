@@ -1,7 +1,16 @@
-import { AiFillCloseCircle } from 'react-icons/ai';
+import { AiFillCloseCircle, AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import './style.css';
 
 const Employee = (props) => {
+    function onFavorite() {
+        props.onFavorite(props.id);
+    }
+
+    const propsFavorite = {
+        size: 25,
+        onClick: onFavorite,
+    }
+
     return (
         <div className='employee' id={props.id}>
             <AiFillCloseCircle 
@@ -17,9 +26,14 @@ const Employee = (props) => {
             <div className='body'>
                 <h4>{props.name}</h4>
                 <h5>{props.role}</h5>
+                <div className='favorite'>
+                    {props.favorite 
+                        ? <AiFillHeart {...propsFavorite} className='favorite'/> 
+                        : <AiOutlineHeart {...propsFavorite}/>
+                    }
+                </div>
             </div>
         </div>
-
     )
 }
 

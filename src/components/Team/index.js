@@ -11,7 +11,19 @@ const Team = (props) => {
             <hr style={{borderColor: props.primaryColor}}/>
             <div className="employees">
                 {props.employees.map(employee => {
-                    return <Employee name={employee.name} backgroundColor={props.primaryColor} key={employee.id} id={employee.id} role={employee.role} image={employee.image} onDelete={props.onDelete}/>;
+                    return (
+                        <Employee 
+                            name={employee.name}
+                            backgroundColor={props.primaryColor}
+                            favorite={employee.favorite}
+                            key={employee.id}
+                            id={employee.id}
+                            role={employee.role}
+                            image={employee.image}
+                            onDelete={props.onDelete}
+                            onFavorite={props.onFavorite}
+                        />
+                    );
                 })}
             </div>
         </section>

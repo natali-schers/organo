@@ -46,5 +46,9 @@
             color: #212121;
             padding: 0 16px;
         }
+
+        .favorite svg {
+            fill: red;
+        }
     }
 }
